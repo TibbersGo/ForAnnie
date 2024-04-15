@@ -2,25 +2,35 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"unsafe"
 )
 
 func main() {
-	for i := 0; i <= 10; i++ {
-		go func(gid int) {
-			n := 0
-			for {
-				fmt.Println(time.Now().Format("2006-01-02 15:04:05"), gid, n)
-				time.Sleep(time.Second)
-			}
-		}(i)
+	//for i := 0; i <= 10; i++ {
+	//	go func(gid int) {
+	//		n := 0
+	//		for {
+	//			fmt.Println(time.Now().Format("2006-01-02 15:04:05"), gid, n)
+	//			time.Sleep(time.Second)
+	//		}
+	//	}(i)
+	//}
+	//go func() {
+	//	arr := 0
+	//	p := uintptr(unsafe.Pointer(&arr))
+	//	myfunc1(p)
+	//}()
+	//a := [3]int{1, 2, 3}
+	//a[0] = 4
+	//fmt.Println(a)
+
+	for i := 0; i < 10; i++ {
+		defer func() {
+			fmt.Println("loop.")
+		}()
+		fmt.Println(i)
 	}
-	go func() {
-		arr := 0
-		p := uintptr(unsafe.Pointer(&arr))
-		myfunc1(p)
-	}()
+
 }
 
 func myfunc1(p uintptr) {

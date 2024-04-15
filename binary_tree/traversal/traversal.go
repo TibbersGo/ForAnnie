@@ -1,5 +1,7 @@
 package traversal
 
+import "strconv"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -33,5 +35,27 @@ func middleOrder(node *TreeNode, res []int) []int {
 	res = middleOrder(node.Left, res)
 	res = append(res, node.Val)
 	res = middleOrder(node.Right, res)
+	return res
+}
+
+func binaryTreePaths(root *TreeNode) []string {
+	res := make([]string, 0)
+
+	return traversal(root, "", res)
+}
+
+func traversal(node *TreeNode, s string, res []string) []string {
+	if node.Left == nil && node.Right == nil {
+		s = s + "->" + strconv.Itoa(node.Val)
+		res = append(res, s)
+		return res
+	}
+	s = s + "->" + strconv.Itoa(node.Val)
+	if node.Left != nil {
+		traversal(node.Left, s, res)
+	}
+	if node.Right != nil {
+		traversal(node.Right, s, res)
+	}
 	return res
 }
