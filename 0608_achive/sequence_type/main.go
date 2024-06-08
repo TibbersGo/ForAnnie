@@ -43,10 +43,10 @@ func genRandomNumber() string {
 	if r == 0 {
 		r = reseed()
 	}
-	r = r*1926817+1893122683
+	r = r*1926817 + 1893122683
 	rand = r
 	randmu.Unlock()
-	return strconv.Itoa(int(1e9+r%1e9))[1:]
+	return strconv.Itoa(int(1e9 + r%1e9))[1:]
 
 }
 
@@ -63,7 +63,7 @@ func m() {
 }
 
 func mm() {
-	a := map[string]string {
+	a := map[string]string{
 		"a": "it's a",
 		"b": "it's b",
 		"c": "it's c",
@@ -89,7 +89,6 @@ func monthtt() {
 	t := time.Date(2022, 3, 31, 0, 0, 0, 0, ct.Location())
 	fmt.Println(t.AddDate(0, 1, 0).Unix())
 	fmt.Println(t.Unix())
-
 
 }
 

@@ -7,7 +7,7 @@ import "fmt"
 机器人每次只能向下或者向右移动一步。
 机器人试图达到网格的右下角（在下图中标记为“Finish”）。
 问总共有多少条不同的路径？
- */
+*/
 
 func uniquePath(x, y int) int {
 	f := make([][]int, x)
@@ -50,7 +50,7 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 		}
 	}
 
-	for j:= 1; j < y; j++ {
+	for j := 1; j < y; j++ {
 		if obstacleGrid[0][j] == 1 || f[0][j-1] == 0 {
 			f[0][j] = 0
 		}
@@ -69,11 +69,10 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	return f[x-1][y-1]
 }
 
-
 func main() {
-	maxPath := uniquePath(3,3)
+	maxPath := uniquePath(3, 3)
 	fmt.Println(maxPath)
-	obstacleGrid := [][]int{{0,0,0},{0,1,0},{0,0,0}}
+	obstacleGrid := [][]int{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}
 	maxPath2 := uniquePathsWithObstacles(obstacleGrid)
 	fmt.Println(maxPath2)
 }
